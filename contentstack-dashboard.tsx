@@ -3,9 +3,11 @@
 import Image from "next/image"
 import { Bell, Search, Grid3X3, Play, Clock, Github, ChevronDown, BellRing, Filter, Plus, AlertCircle, Package, Shield, Sparkles, FileWarning, Cpu, Database, CheckCircle2, CalendarClock } from "lucide-react"
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 
 export default function ContentStackDashboard() {
   const router = useRouter();
+  const [isAlertVisible, setIsAlertVisible] = useState(true);
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -86,31 +88,36 @@ export default function ContentStackDashboard() {
           {/* Existing content for projects, alerts, etc. */}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
             {/* Intelligent Alerts */}
-            <div className="lg:col-span-4 mb-6 bg-gradient-to-r from-amber-50 to-yellow-50 p-4 rounded-lg border border-amber-200">
-              <div className="flex items-start gap-3">
-                <div className="bg-amber-100 p-2 rounded-full">
-                  <BellRing className="w-5 h-5 text-amber-600" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex justify-between items-start">
-                    <h3 className="font-semibold text-amber-800">Intelligent Alert: Traffic Spike Detected</h3>
-                    <span className="text-xs px-2 py-0.5 bg-amber-100 text-amber-800 rounded-full">10 minutes ago</span>
+            {isAlertVisible && (
+              <div className="lg:col-span-4 mb-6 bg-gradient-to-r from-amber-50 to-yellow-50 p-4 rounded-lg border border-amber-200">
+                <div className="flex items-start gap-3">
+                  <div className="bg-amber-100 p-2 rounded-full">
+                    <BellRing className="w-5 h-5 text-amber-600" />
                   </div>
-                  <p className="text-sm text-amber-700 mt-1">
-                    Your nextjs-commerce site is experiencing 230% higher traffic than usual. All systems are currently
-                    stable, but you may want to monitor performance.
-                  </p>
-                  <div className="flex gap-2 mt-2">
-                    <button className="text-xs px-3 py-1 bg-amber-200 text-amber-800 rounded-md hover:bg-amber-300">
-                      View Details
-                    </button>
-                    <button className="text-xs px-3 py-1 bg-white text-amber-800 border border-amber-200 rounded-md hover:bg-amber-50">
-                      Dismiss
-                    </button>
+                  <div className="flex-1">
+                    <div className="flex justify-between items-start">
+                      <h3 className="font-semibold text-amber-800">Intelligent Alert: Traffic Spike Detected</h3>
+                      <span className="text-xs px-2 py-0.5 bg-amber-100 text-amber-800 rounded-full">10 minutes ago</span>
+                    </div>
+                    <p className="text-sm text-amber-700 mt-1">
+                      Your nextjs-commerce site is experiencing 230% higher traffic than usual. All systems are currently
+                      stable, but you may want to monitor performance.
+                    </p>
+                    <div className="flex gap-2 mt-2">
+                      <button className="text-xs px-3 py-1 bg-amber-200 text-amber-800 rounded-md hover:bg-amber-300">
+                        View Details
+                      </button>
+                      <button 
+                        onClick={() => setIsAlertVisible(false)}
+                        className="text-xs px-3 py-1 bg-white text-amber-800 border border-amber-200 rounded-md hover:bg-amber-50"
+                      >
+                        Dismiss
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            )}
 
             {/* Left column - Main content */}
             <div className="lg:col-span-3 mb-14">
@@ -129,9 +136,15 @@ export default function ContentStackDashboard() {
                   <h3 className="font-medium mb-1">Next JS Sample</h3>
                   <p className="text-xs text-slate-500 mb-auto">Dev</p>
                   <div className="flex justify-between items-center mt-2 pt-2 border-t text-xs">
-                    <a href="#" className="text-purple-600 flex items-center">
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.open('your-site-url', '_blank');
+                      }}
+                      className="text-purple-600 flex items-center"
+                    >
                       <span>Open Site</span>
-                    </a>
+                    </button>
                     <span className="text-slate-500">1d ago</span>
                   </div>
                 </div>
@@ -150,9 +163,15 @@ export default function ContentStackDashboard() {
                   <h3 className="font-medium mb-1">nextjs-commerce</h3>
                   <p className="text-xs text-slate-500 mb-auto">Default</p>
                   <div className="flex justify-between items-center mt-2 pt-2 border-t text-xs">
-                    <a href="#" className="text-purple-600 flex items-center">
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.open('your-site-url', '_blank');
+                      }}
+                      className="text-purple-600 flex items-center"
+                    >
                       <span>Deployment Log</span>
-                    </a>
+                    </button>
                     <span className="text-slate-500">Feb 13, 2025</span>
                   </div>
                 </div>
@@ -171,9 +190,15 @@ export default function ContentStackDashboard() {
                   <h3 className="font-medium mb-1">nextjs-ai-chatbot</h3>
                   <p className="text-xs text-slate-500 mb-auto">Default</p>
                   <div className="flex justify-between items-center mt-2 pt-2 border-t text-xs">
-                    <a href="#" className="text-purple-600 flex items-center">
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.open('your-site-url', '_blank');
+                      }}
+                      className="text-purple-600 flex items-center"
+                    >
                       <span>Deployment Log</span>
-                    </a>
+                    </button>
                     <span className="text-slate-500">Feb 13, 2025</span>
                   </div>
                 </div>
@@ -192,9 +217,15 @@ export default function ContentStackDashboard() {
                   <h3 className="font-medium mb-1">gatsby-starter-default</h3>
                   <p className="text-xs text-slate-500 mb-auto">Default</p>
                   <div className="flex justify-between items-center mt-2 pt-2 border-t text-xs">
-                    <a href="#" className="text-purple-600 flex items-center">
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.open('your-site-url', '_blank');
+                      }}
+                      className="text-purple-600 flex items-center"
+                    >
                       <span>Open Site</span>
-                    </a>
+                    </button>
                     <span className="text-slate-500">Feb 03, 2025</span>
                   </div>
                 </div>
@@ -213,9 +244,15 @@ export default function ContentStackDashboard() {
                   <h3 className="font-medium mb-1">vercel-demo</h3>
                   <p className="text-xs text-slate-500 mb-auto">Default</p>
                   <div className="flex justify-between items-center mt-2 pt-2 border-t text-xs">
-                    <a href="#" className="text-purple-600 flex items-center">
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.open('your-site-url', '_blank');
+                      }}
+                      className="text-purple-600 flex items-center"
+                    >
                       <span>Open Site</span>
-                    </a>
+                    </button>
                     <span className="text-slate-500">Jan 29, 2025</span>
                   </div>
                 </div>
@@ -234,9 +271,15 @@ export default function ContentStackDashboard() {
                   <h3 className="font-medium mb-1">restaurant-menu-react-app</h3>
                   <p className="text-xs text-slate-500 mb-auto">Default</p>
                   <div className="flex justify-between items-center mt-2 pt-2 border-t text-xs">
-                    <a href="#" className="text-purple-600 flex items-center">
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.open('your-site-url', '_blank');
+                      }}
+                      className="text-purple-600 flex items-center"
+                    >
                       <span>Open Site</span>
-                    </a>
+                    </button>
                     <span className="text-slate-500">Nov 14, 2024</span>
                   </div>
                 </div>
@@ -252,9 +295,15 @@ export default function ContentStackDashboard() {
                   <h3 className="font-medium mb-1 text-sm">Compass Starter - b1t83e56095f65b7f15</h3>
                   <p className="text-xs text-slate-500 mb-auto">production</p>
                   <div className="flex justify-between items-center mt-2 pt-2 border-t text-xs">
-                    <a href="#" className="text-purple-600 flex items-center">
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.open('your-site-url', '_blank');
+                      }}
+                      className="text-purple-600 flex items-center"
+                    >
                       <span>Open Site</span>
-                    </a>
+                    </button>
                     <span className="text-slate-500">Sep 16, 2024</span>
                   </div>
                 </div>

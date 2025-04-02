@@ -32,9 +32,9 @@ export default function EnvironmentPage() {
               className="cursor-pointer"
             />
           </button>
-          <h1 className="text-lg font-semibold mr-8">Organization</h1>
+          <h1 className="text-lg font-semibold mr-8">Project</h1>
           <div className="flex items-center text-sm text-slate-600">
-            <span>Tharun's Employee Organization</span>
+            <span>Next-JS-Sample</span>
             <ChevronDown className="w-4 h-4 ml-1" />
           </div>
         </div>
@@ -151,7 +151,7 @@ export default function EnvironmentPage() {
               <tbody className="bg-white divide-y divide-slate-200">
                 {/* Default Environment */}
                 <tr 
-                  onClick={() => router.push(`/environment/${projectName}/default`)}
+                  onClick={() => router.push(`/environment/${projectName}/production`)}
                   className="hover:bg-purple-50 cursor-pointer transition-all duration-200 group border-l-4 border-transparent hover:border-purple-600"
                 >
                   <td className="px-6 py-4 whitespace-nowrap">
@@ -189,7 +189,7 @@ export default function EnvironmentPage() {
 
                 {/* Dev Environment */}
                 <tr 
-                  onClick={() => router.push(`/environment/${projectName}/dev`)}
+                  onClick={() => router.push(`/environment/${projectName}/staging`)}
                   className="hover:bg-purple-50 cursor-pointer transition-all duration-200 group border-l-4 border-transparent hover:border-purple-600"
                 >
                   <td className="px-6 py-4 whitespace-nowrap">
@@ -227,7 +227,7 @@ export default function EnvironmentPage() {
 
                 {/* Staging Environment */}
                 <tr 
-                  onClick={() => router.push(`/environment/${projectName}/staging`)}
+                  onClick={() => router.push(`/environment/${projectName}/development`)}
                   className="hover:bg-purple-50 cursor-pointer transition-all duration-200 group border-l-4 border-transparent hover:border-purple-600"
                 >
                   <td className="px-6 py-4 whitespace-nowrap">
