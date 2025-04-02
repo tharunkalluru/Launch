@@ -1,7 +1,61 @@
 "use client";
 
 import Image from 'next/image';
-import { ChevronDown, Search, Bell, Grid3X3, ArrowLeft, Rocket, Maximize2, ExternalLink, CheckCircle2, GitBranch, GitCommit, FileText, Clock, Package, Zap, Gauge, Layers, Wifi, ArrowUpRight, ArrowDownRight, ImageIcon, FileCode, FileJson, Server, Cpu, HardDrive, Globe, Lightbulb, Shield, MoreVertical, Copy, Filter } from 'lucide-react';
+import { 
+    
+      Bell,
+  Search,
+  Grid3X3,
+  ChevronDown,
+  CheckCircle2,
+  GitBranch,
+  GitCommit,
+  ExternalLink,
+  AlertCircle,
+  FileText,
+  Zap,
+  Gauge,
+  Layers,
+  Wifi,
+  ArrowUpRight,
+  ArrowDownRight,
+  Lightbulb,
+  Package,
+  FileCode,
+  ImageIcon,
+  FileJson,
+  Server,
+  Globe,
+  Rocket,
+  TerminalSquare,
+  Download,
+  Maximize2,
+  Copy,
+  Filter,
+  ArrowLeft,
+  Clock,
+  Laptop,
+  PieChart,
+  BarChart,
+  LineChart,
+  Activity,
+  HardDriveDownload,
+  CloudCog,
+  Boxes,
+  Code,
+  Layout,
+  Workflow,
+  Repeat,
+  Bookmark,
+  Newspaper,
+  Laptop2,
+  SmartphoneIcon,
+  TabletSmartphone,
+Cpu,
+HardDrive,
+Shield,
+
+ } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -83,10 +137,16 @@ export default function Page() {
                   <span className="text-xs px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full">Latest</span>
                 </div>
               </div>
-              <button className="bg-purple-600 text-white px-4 py-2 rounded-md flex items-center gap-2 hover:bg-purple-700">
-                <Rocket className="w-4 h-4" />
-                <span>Redeploy</span>
-              </button>
+              <div className="flex items-center gap-2">
+                <button className="bg-red-600 text-white px-4 py-2 rounded-md flex items-center gap-2 hover:bg-red-700">
+                  <ArrowLeft className="w-4 h-4" />
+                  <span>Instant Rollback</span>
+                </button>
+                <button className="bg-purple-600 text-white px-4 py-2 rounded-md flex items-center gap-2 hover:bg-purple-700">
+                  <Rocket className="w-4 h-4" />
+                  <span>Redeploy</span>
+                </button>
+              </div>
             </div>
           </div>
 
@@ -252,9 +312,72 @@ export default function Page() {
                     </div>
                   </div>
                 </div>
+
+                {/* Status Bar for Features */}
+                <div className="bg-white p-2 rounded-lg shadow-sm flex justify-between items-center mt-4">
+                  <div className="flex items-center">
+                    <span className="text-sm font-medium text-slate-800 mr-2">Edge Functions:</span>
+                    <span className="text-sm font-medium text-green-600">Enabled</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-sm font-medium text-slate-800 mr-2">Smart Cache:</span>
+                    <span className="text-sm font-medium text-black-600">Disabled</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-sm font-medium text-slate-800 mr-2">Auto Deployment:</span>
+                    <span className="text-sm font-medium text-green-600">Enabled</span>
+                  </div>
+                </div>
               </div>
             </div>
 
+          {/* Stack Integration Details */}
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold mb-3">Stack Integration Details</h3>
+            <div className="bg-white rounded-lg border shadow-sm">
+              <div className="p-3 border-b">
+                <div className="flex items-center">
+                  <Boxes className="w-4 h-4 text-purple-500 mr-2" />
+                  <h4 className="font-medium text-sm">Contentstack CMS Integration</h4>
+                  <span className="ml-auto text-xs px-2 py-0.5 bg-green-50 text-green-600 rounded-full">Active</span>
+                </div>
+              </div>
+              <div className="p-3">
+                <div className="grid grid-cols-3 gap-3 text-sm">
+                  <div>
+                    <p className="text-xs text-slate-500">Stack Name</p>
+                    <p className="font-medium">Tharun's Content Hub</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-slate-500">Environment</p>
+                    <p className="font-medium">Production</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-slate-500">Branch</p>
+                    <div className="flex items-center">
+                      <GitBranch className="w-3 h-3 text-slate-500 mr-1" />
+                      <span>main</span>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-xs text-slate-500">Last Update</p>
+                    <p className="font-medium">Mar 31, 2025</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-slate-500">Content Models</p>
+                    <p className="font-medium">12 models</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-slate-500">Content Entries</p>
+                    <p className="font-medium">247 entries</p>
+                  </div>
+                </div>
+                <div className="mt-2 pt-2 border-t flex justify-end">
+                  <button className="text-xs text-purple-600 hover:text-purple-800">Manage Integration</button>
+                </div>
+              </div>
+            </div>
+          </div>
             {/* Performance Summary */}
             <div className="mb-6">
               <h3 className="text-lg font-semibold mb-3">Performance Summary</h3>
@@ -350,6 +473,90 @@ export default function Page() {
                 </div>
               </div>
             </div>
+  {/* URL Requests and HTTP Error Rate */}
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            {/* URL Requests */}
+            <div className="bg-white rounded-lg border shadow-sm">
+              <div className="p-4 border-b">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <Activity className="w-5 h-5 text-purple-500 mr-2" />
+                    <h4 className="font-medium">URL Requests</h4>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <button className="text-xs px-2 py-1 bg-slate-100 rounded-md">24h</button>
+                    <button className="text-xs px-2 py-1 bg-purple-100 text-purple-700 rounded-md">7d</button>
+                    <button className="text-xs px-2 py-1 bg-slate-100 rounded-md">30d</button>
+                  </div>
+                </div>
+              </div>
+              <div className="p-4">
+                <div className="h-64 bg-slate-50 rounded-md flex items-center justify-center">
+                  {/* This would be a chart in a real implementation */}
+                  <div className="text-center">
+                    <LineChart className="w-12 h-12 text-purple-300 mx-auto mb-2" />
+                    <p className="text-sm text-slate-500">URL Requests Chart</p>
+                    <p className="text-xs text-slate-400 mt-1">Total: 1.2M requests in last 7 days</p>
+                  </div>
+                </div>
+                <div className="mt-4 grid grid-cols-3 gap-4">
+                  <div className="text-center">
+                    <p className="text-xs text-slate-500">Avg. Daily</p>
+                    <p className="text-lg font-semibold">172K</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-xs text-slate-500">Peak Hour</p>
+                    <p className="text-lg font-semibold">24.3K</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-xs text-slate-500">Growth</p>
+                    <p className="text-lg font-semibold text-green-600">+12.4%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* HTTP Error Rate */}
+            <div className="bg-white rounded-lg border shadow-sm">
+              <div className="p-4 border-b">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <AlertCircle className="w-5 h-5 text-purple-500 mr-2" />
+                    <h4 className="font-medium">HTTP Error Rate</h4>
+                  </div>
+                  <span className="text-xs px-2 py-0.5 bg-green-50 text-green-600 rounded-full">0.8% (Good)</span>
+                </div>
+              </div>
+              <div className="p-4">
+                <div className="h-64 bg-slate-50 rounded-md flex items-center justify-center">
+                  {/* This would be a chart in a real implementation */}
+                  <div className="text-center">
+                    <PieChart className="w-12 h-12 text-purple-300 mx-auto mb-2" />
+                    <p className="text-sm text-slate-500">HTTP Status Distribution</p>
+                    <p className="text-xs text-slate-400 mt-1">Based on last 7 days of traffic</p>
+                  </div>
+                </div>
+                <div className="mt-4 grid grid-cols-4 gap-2">
+                  <div className="p-2 rounded-md bg-green-50">
+                    <p className="text-xs text-green-600 font-medium">2xx Success</p>
+                    <p className="text-lg font-semibold text-green-700">99.2%</p>
+                  </div>
+                  <div className="p-2 rounded-md bg-blue-50">
+                    <p className="text-xs text-blue-600 font-medium">3xx Redirect</p>
+                    <p className="text-lg font-semibold text-blue-700">0.3%</p>
+                  </div>
+                  <div className="p-2 rounded-md bg-yellow-50">
+                    <p className="text-xs text-yellow-600 font-medium">4xx Client</p>
+                    <p className="text-lg font-semibold text-yellow-700">0.4%</p>
+                  </div>
+                  <div className="p-2 rounded-md bg-red-50">
+                    <p className="text-xs text-red-600 font-medium">5xx Server</p>
+                    <p className="text-lg font-semibold text-red-700">0.1%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
             {/* Traffic Summary */}
             <div className="mb-6">
@@ -413,25 +620,88 @@ export default function Page() {
               </div>
             </div>
 
-            {/* Static Assets Information */}
-            <div className="mb-6">
-              <div className="flex justify-between items-center mb-3">
-                <h3 className="text-lg font-semibold">Static Assets</h3>
-                <div className="flex items-center gap-2">
-                  <div className="relative">
-                    <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" />
-                    <input
-                      type="text"
-                      placeholder="Search assets..."
-                      className="pl-9 pr-4 py-1 border rounded-md text-sm w-48 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    />
+          {/* Traffic by Edge Locations (World Map) */}
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold mb-3">Traffic by Edge Locations</h3>
+            <div className="bg-white rounded-lg border shadow-sm">
+              <div className="p-4 border-b">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <Globe className="w-5 h-5 text-purple-500 mr-2" />
+                    <h4 className="font-medium">Global Distribution</h4>
                   </div>
-                  <button className="p-1 rounded-md border hover:bg-slate-50">
-                    <Filter className="w-4 h-4 text-slate-500" />
-                  </button>
+                  <div className="flex items-center gap-2">
+                    <button className="text-xs px-2 py-1 bg-slate-100 rounded-md">24h</button>
+                    <button className="text-xs px-2 py-1 bg-purple-100 text-purple-700 rounded-md">7d</button>
+                    <button className="text-xs px-2 py-1 bg-slate-100 rounded-md">30d</button>
+                  </div>
                 </div>
               </div>
-              <div className="bg-white rounded-lg border shadow-sm overflow-hidden">
+              <div className="p-4">
+                <div className="h-80 bg-slate-50 rounded-md flex items-center justify-center">
+                  {/* This would be a world map visualization in a real implementation */}
+                  <div className="text-center">
+                    <Globe className="w-16 h-16 text-purple-300 mx-auto mb-2" />
+                    <p className="text-sm text-slate-500">World Map Visualization</p>
+                    <p className="text-xs text-slate-400 mt-1">Traffic distribution across edge locations</p>
+                  </div>
+                </div>
+                <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="p-3 bg-slate-50 rounded-md">
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center">
+                        <div className="w-3 h-3 bg-purple-500 rounded-full mr-2"></div>
+                        <span className="text-sm font-medium">North America</span>
+                      </div>
+                      <span className="text-sm font-medium">42%</span>
+                    </div>
+                    <div className="mt-2 w-full bg-slate-200 rounded-full h-1.5">
+                      <div className="bg-purple-500 h-1.5 rounded-full" style={{ width: "42%" }}></div>
+                    </div>
+                  </div>
+                  <div className="p-3 bg-slate-50 rounded-md">
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center">
+                        <div className="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+                        <span className="text-sm font-medium">Europe</span>
+                      </div>
+                      <span className="text-sm font-medium">31%</span>
+                    </div>
+                    <div className="mt-2 w-full bg-slate-200 rounded-full h-1.5">
+                      <div className="bg-blue-500 h-1.5 rounded-full" style={{ width: "31%" }}></div>
+                    </div>
+                  </div>
+                  <div className="p-3 bg-slate-50 rounded-md">
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center">
+                        <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                        <span className="text-sm font-medium">Asia Pacific</span>
+                      </div>
+                      <span className="text-sm font-medium">27%</span>
+                    </div>
+                    <div className="mt-2 w-full bg-slate-200 rounded-full h-1.5">
+                      <div className="bg-green-500 h-1.5 rounded-full" style={{ width: "27%" }}></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Top URLs and HTTP Status Codes */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            {/* Top URLs */}
+            <div className="bg-white rounded-lg border shadow-sm">
+              <div className="p-4 border-b">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <Bookmark className="w-5 h-5 text-purple-500 mr-2" />
+                    <h4 className="font-medium">Top URLs</h4>
+                  </div>
+                  <button className="text-sm text-purple-600">View All</button>
+                </div>
+              </div>
+              <div className="p-0">
                 <div className="overflow-x-auto">
                   <table className="min-w-full divide-y divide-slate-200">
                     <thead className="bg-slate-50">
@@ -440,31 +710,19 @@ export default function Page() {
                           scope="col"
                           className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider"
                         >
-                          Asset
+                          URL Path
                         </th>
                         <th
                           scope="col"
                           className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider"
                         >
-                          Type
+                          Requests
                         </th>
                         <th
                           scope="col"
                           className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider"
                         >
-                          Size
-                        </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider"
-                        >
-                          Path
-                        </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-right text-xs font-medium text-slate-500 uppercase tracking-wider"
-                        >
-                          Actions
+                          Avg. Time
                         </th>
                       </tr>
                     </thead>
@@ -472,110 +730,351 @@ export default function Page() {
                       <tr>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
-                            <ImageIcon className="w-4 h-4 text-blue-500 mr-2" />
-                            <span className="text-sm">hero-image.jpg</span>
+                            <span className="text-sm text-purple-600">/</span>
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="text-sm">Image</span>
+                          <span className="text-sm">42,387</span>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="text-sm">245 KB</span>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="text-sm text-slate-500">/images/hero-image.jpg</span>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
-                          <button className="text-purple-600 hover:text-purple-900 mr-3">View</button>
-                          <button className="text-slate-500 hover:text-slate-700">
-                            <Copy className="w-4 h-4" />
-                          </button>
+                          <span className="text-sm">124ms</span>
                         </td>
                       </tr>
                       <tr>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
-                            <FileCode className="w-4 h-4 text-green-500 mr-2" />
-                            <span className="text-sm">main.js</span>
+                            <span className="text-sm text-purple-600">/products</span>
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="text-sm">JavaScript</span>
+                          <span className="text-sm">28,945</span>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="text-sm">124 KB</span>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="text-sm text-slate-500">/assets/main.js</span>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
-                          <button className="text-purple-600 hover:text-purple-900 mr-3">View</button>
-                          <button className="text-slate-500 hover:text-slate-700">
-                            <Copy className="w-4 h-4" />
-                          </button>
+                          <span className="text-sm">187ms</span>
                         </td>
                       </tr>
                       <tr>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
-                            <FileCode className="w-4 h-4 text-blue-500 mr-2" />
-                            <span className="text-sm">styles.css</span>
+                            <span className="text-sm text-purple-600">/blog</span>
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="text-sm">CSS</span>
+                          <span className="text-sm">15,721</span>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="text-sm">32 KB</span>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="text-sm text-slate-500">/assets/styles.css</span>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
-                          <button className="text-purple-600 hover:text-purple-900 mr-3">View</button>
-                          <button className="text-slate-500 hover:text-slate-700">
-                            <Copy className="w-4 h-4" />
-                          </button>
+                          <span className="text-sm">156ms</span>
                         </td>
                       </tr>
                       <tr>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
-                            <FileJson className="w-4 h-4 text-yellow-500 mr-2" />
-                            <span className="text-sm">config.json</span>
+                            <span className="text-sm text-purple-600">/about</span>
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="text-sm">JSON</span>
+                          <span className="text-sm">9,842</span>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="text-sm">8 KB</span>
+                          <span className="text-sm">112ms</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="flex items-center">
+                            <span className="text-sm text-purple-600">/api/products</span>
+                          </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="text-sm text-slate-500">/config.json</span>
+                          <span className="text-sm">8,456</span>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
-                          <button className="text-purple-600 hover:text-purple-900 mr-3">View</button>
-                          <button className="text-slate-500 hover:text-slate-700">
-                            <Copy className="w-4 h-4" />
-                          </button>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <span className="text-sm">243ms</span>
                         </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-                <div className="px-6 py-3 bg-slate-50 border-t flex justify-between items-center">
-                  <span className="text-xs text-slate-500">Showing 4 of 24 assets</span>
-                  <div className="flex items-center gap-2">
-                    <button className="px-2 py-1 text-xs border rounded hover:bg-slate-100">Previous</button>
-                    <button className="px-2 py-1 text-xs border rounded bg-purple-600 text-white">1</button>
-                    <button className="px-2 py-1 text-xs border rounded hover:bg-slate-100">2</button>
-                    <button className="px-2 py-1 text-xs border rounded hover:bg-slate-100">3</button>
-                    <button className="px-2 py-1 text-xs border rounded hover:bg-slate-100">Next</button>
+              </div>
+            </div>
+
+            {/* Cache Usage */}
+            <div className="bg-white rounded-lg border shadow-sm">
+              <div className="p-4 border-b">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <CloudCog className="w-5 h-5 text-purple-500 mr-2" />
+                    <h4 className="font-medium">Cache Performance</h4>
+                  </div>
+                  <span className="text-xs px-2 py-0.5 bg-green-50 text-green-600 rounded-full">78% Hit Rate</span>
+                </div>
+              </div>
+              <div className="p-4">
+                <div className="h-64 bg-slate-50 rounded-md flex items-center justify-center">
+                  {/* This would be a chart in a real implementation */}
+                  <div className="text-center">
+                    <PieChart className="w-12 h-12 text-purple-300 mx-auto mb-2" />
+                    <p className="text-sm text-slate-500">Cache Hit/Miss Distribution</p>
+                    <p className="text-xs text-slate-400 mt-1">Based on last 7 days of traffic</p>
+                  </div>
+                </div>
+                <div className="mt-4 grid grid-cols-2 gap-4">
+                  <div className="p-3 bg-green-50 rounded-md">
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center">
+                        <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                        <span className="text-sm font-medium">Cache Hit</span>
+                      </div>
+                      <span className="text-sm font-medium">78%</span>
+                    </div>
+                    <div className="mt-2 w-full bg-slate-200 rounded-full h-1.5">
+                      <div className="bg-green-500 h-1.5 rounded-full" style={{ width: "78%" }}></div>
+                    </div>
+                    <div className="mt-2">
+                      <p className="text-xs text-green-700">Bandwidth Saved: 663 GB</p>
+                    </div>
+                  </div>
+                  <div className="p-3 bg-slate-50 rounded-md">
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center">
+                        <div className="w-3 h-3 bg-slate-500 rounded-full mr-2"></div>
+                        <span className="text-sm font-medium">Cache Miss</span>
+                      </div>
+                      <span className="text-sm font-medium">22%</span>
+                    </div>
+                    <div className="mt-2 w-full bg-slate-200 rounded-full h-1.5">
+                      <div className="bg-slate-500 h-1.5 rounded-full" style={{ width: "22%" }}></div>
+                    </div>
+                    <div className="mt-2">
+                      <p className="text-xs text-slate-700">Bandwidth Used: 187 GB</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+
+
+            {/* Network & API Performance */}
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold mb-3">Network & API Performance</h3>
+              <div className="bg-white rounded-lg border shadow-sm p-4">
+                <div className="flex justify-between items-center mb-4">
+                  <div className="flex items-center">
+                    <Wifi className="w-5 h-5 text-green-500 mr-2" />
+                    <h3 className="font-semibold">Network & API Performance</h3>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <button className="text-xs px-2 py-1 rounded border border-slate-200 bg-white">Last 24h</button>
+                    <button className="text-sm text-purple-600">View Details</button>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <h4 className="text-sm font-medium mb-3">API Response Times</h4>
+                    <div className="space-y-3">
+                      <div>
+                        <div className="flex justify-between items-center mb-1">
+                          <span className="text-xs text-slate-600">/api/products</span>
+                          <span className="text-xs font-medium">124ms avg</span>
+                        </div>
+                        <div className="w-full bg-slate-100 rounded-full h-2">
+                          <div className="bg-green-500 h-2 rounded-full" style={{ width: "30%" }}></div>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="flex justify-between items-center mb-1">
+                          <span className="text-xs text-slate-600">/api/auth</span>
+                          <span className="text-xs font-medium">87ms avg</span>
+                        </div>
+                        <div className="w-full bg-slate-100 rounded-full h-2">
+                          <div className="bg-green-500 h-2 rounded-full" style={{ width: "20%" }}></div>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="flex justify-between items-center mb-1">
+                          <span className="text-xs text-slate-600">/api/checkout</span>
+                          <span className="text-xs font-medium">312ms avg</span>
+                        </div>
+                        <div className="w-full bg-slate-100 rounded-full h-2">
+                          <div className="bg-yellow-500 h-2 rounded-full" style={{ width: "65%" }}></div>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="flex justify-between items-center mb-1">
+                          <span className="text-xs text-slate-600">/api/recommendations</span>
+                          <span className="text-xs font-medium">543ms avg</span>
+                        </div>
+                        <div className="w-full bg-slate-100 rounded-full h-2">
+                          <div className="bg-red-500 h-2 rounded-full" style={{ width: "85%" }}></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-medium mb-3">Network Status</h4>
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between p-2 bg-slate-50 rounded-md">
+                        <div className="flex items-center">
+                          <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                          <span className="text-xs">CDN Cache Hit Rate</span>
+                        </div>
+                        <span className="text-xs font-medium">92%</span>
+                      </div>
+                      <div className="flex items-center justify-between p-2 bg-slate-50 rounded-md">
+                        <div className="flex items-center">
+                          <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                          <span className="text-xs">Edge Network Status</span>
+                        </div>
+                        <span className="text-xs font-medium">Operational</span>
+                      </div>
+                      <div className="flex items-center justify-between p-2 bg-slate-50 rounded-md">
+                        <div className="flex items-center">
+                          <div className="w-2 h-2 bg-yellow-500 rounded-full mr-2"></div>
+                          <span className="text-xs">Database Connections</span>
+                        </div>
+                        <span className="text-xs font-medium">High (78%)</span>
+                      </div>
+                      <div className="flex items-center justify-between p-2 bg-slate-50 rounded-md">
+                        <div className="flex items-center">
+                          <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                          <span className="text-xs">Global Availability</span>
+                        </div>
+                        <span className="text-xs font-medium">100%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {/* Organized Overview of Deployment Outputs */}
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold mb-3">Deployment Outputs</h3>
+            <div className="bg-white rounded-lg border shadow-sm">
+              <div className="p-4 border-b">
+                <div className="flex items-center">
+                  <Boxes className="w-5 h-5 text-purple-500 mr-2" />
+                  <h4 className="font-medium">Output Categories</h4>
+                </div>
+              </div>
+              <div className="p-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Static Assets */}
+                  <div className="p-4 bg-slate-50 rounded-md">
+                    <div className="flex items-center mb-3">
+                      <ImageIcon className="w-5 h-5 text-purple-500 mr-2" />
+                      <h5 className="font-medium">Static Assets</h5>
+                      <span className="ml-auto text-xs px-2 py-0.5 bg-purple-100 text-purple-700 rounded-full">
+                        24 files
+                      </span>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">Images</span>
+                        <span className="text-sm">8 files (1.2 MB)</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">JavaScript</span>
+                        <span className="text-sm">10 files (324 KB)</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">CSS</span>
+                        <span className="text-sm">4 files (86 KB)</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">Fonts</span>
+                        <span className="text-sm">2 files (156 KB)</span>
+                      </div>
+                    </div>
+                    <div className="mt-3 flex justify-end">
+                      <button className="text-xs text-purple-600">View All Assets</button>
+                    </div>
+                  </div>
+
+                  {/* Functions */}
+                  <div className="p-4 bg-slate-50 rounded-md">
+                    <div className="flex items-center mb-3">
+                      <Server className="w-5 h-5 text-purple-500 mr-2" />
+                      <h5 className="font-medium">Serverless Functions</h5>
+                      <span className="ml-auto text-xs px-2 py-0.5 bg-purple-100 text-purple-700 rounded-full">
+                        8 functions
+                      </span>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">API Routes</span>
+                        <span className="text-sm">5 functions</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">Authentication</span>
+                        <span className="text-sm">2 functions</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">Webhooks</span>
+                        <span className="text-sm">1 function</span>
+                      </div>
+                    </div>
+                    <div className="mt-3 flex justify-end">
+                      <button className="text-xs text-purple-600">View All Functions</button>
+                    </div>
+                  </div>
+
+                  {/* ISR Functions */}
+                  <div className="p-4 bg-slate-50 rounded-md">
+                    <div className="flex items-center mb-3">
+                      <Repeat className="w-5 h-5 text-purple-500 mr-2" />
+                      <h5 className="font-medium">ISR Functions</h5>
+                      <span className="ml-auto text-xs px-2 py-0.5 bg-purple-100 text-purple-700 rounded-full">
+                        3 functions
+                      </span>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">/products/[id]</span>
+                        <span className="text-sm">Revalidate: 60s</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">/blog/[slug]</span>
+                        <span className="text-sm">Revalidate: 300s</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">/api/products</span>
+                        <span className="text-sm">Revalidate: 120s</span>
+                      </div>
+                    </div>
+                    <div className="mt-3 flex justify-end">
+                      <button className="text-xs text-purple-600">View All ISR Functions</button>
+                    </div>
+                  </div>
+
+                  {/* Edge Middleware */}
+                  <div className="p-4 bg-slate-50 rounded-md">
+                    <div className="flex items-center mb-3">
+                      <Globe className="w-5 h-5 text-purple-500 mr-2" />
+                      <h5 className="font-medium">Edge Middleware</h5>
+                      <span className="ml-auto text-xs px-2 py-0.5 bg-purple-100 text-purple-700 rounded-full">
+                        2 matchers
+                      </span>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">/api/*</span>
+                        <span className="text-sm">Authentication</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">/*</span>
+                        <span className="text-sm">Geolocation</span>
+                      </div>
+                    </div>
+                    <div className="mt-3 flex justify-end">
+                      <button className="text-xs text-purple-600">View Middleware</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            
 
             {/* Functions Details */}
             <div className="mb-6">
@@ -711,6 +1210,97 @@ export default function Page() {
                 </div>
               </div>
             </div>
+
+                      {/* Device Usage */}
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold mb-3">Device Usage</h3>
+            <div className="bg-white rounded-lg border shadow-sm">
+              <div className="p-4 border-b">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <Laptop className="w-5 h-5 text-purple-500 mr-2" />
+                    <h4 className="font-medium">Device Breakdown</h4>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <button className="text-xs px-2 py-1 bg-slate-100 rounded-md">24h</button>
+                    <button className="text-xs px-2 py-1 bg-purple-100 text-purple-700 rounded-md">7d</button>
+                    <button className="text-xs px-2 py-1 bg-slate-100 rounded-md">30d</button>
+                  </div>
+                </div>
+              </div>
+              <div className="p-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="flex flex-col items-center p-4 bg-slate-50 rounded-md">
+                    <Laptop2 className="w-12 h-12 text-purple-300 mb-3" />
+                    <p className="text-lg font-semibold">52%</p>
+                    <p className="text-sm text-slate-500">Desktop</p>
+                    <div className="mt-2 w-full bg-slate-200 rounded-full h-1.5">
+                      <div className="bg-purple-500 h-1.5 rounded-full" style={{ width: "52%" }}></div>
+                    </div>
+                    <p className="text-xs text-slate-500 mt-2">625,482 sessions</p>
+                  </div>
+                  <div className="flex flex-col items-center p-4 bg-slate-50 rounded-md">
+                    <SmartphoneIcon className="w-12 h-12 text-purple-300 mb-3" />
+                    <p className="text-lg font-semibold">41%</p>
+                    <p className="text-sm text-slate-500">Mobile</p>
+                    <div className="mt-2 w-full bg-slate-200 rounded-full h-1.5">
+                      <div className="bg-purple-500 h-1.5 rounded-full" style={{ width: "41%" }}></div>
+                    </div>
+                    <p className="text-xs text-slate-500 mt-2">493,245 sessions</p>
+                  </div>
+                  <div className="flex flex-col items-center p-4 bg-slate-50 rounded-md">
+                    <TabletSmartphone className="w-12 h-12 text-purple-300 mb-3" />
+                    <p className="text-lg font-semibold">7%</p>
+                    <p className="text-sm text-slate-500">Tablet</p>
+                    <div className="mt-2 w-full bg-slate-200 rounded-full h-1.5">
+                      <div className="bg-purple-500 h-1.5 rounded-full" style={{ width: "7%" }}></div>
+                    </div>
+                    <p className="text-xs text-slate-500 mt-2">84,127 sessions</p>
+                  </div>
+                </div>
+                <div className="mt-6 p-4 bg-slate-50 rounded-md">
+                  <h5 className="text-sm font-medium mb-3">Top Browsers</h5>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center">
+                        <div className="w-3 h-3 bg-purple-500 rounded-full mr-2"></div>
+                        <span className="text-sm">Chrome</span>
+                      </div>
+                      <span className="text-sm">64%</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center">
+                        <div className="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+                        <span className="text-sm">Safari</span>
+                      </div>
+                      <span className="text-sm">21%</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center">
+                        <div className="w-3 h-3 bg-orange-500 rounded-full mr-2"></div>
+                        <span className="text-sm">Firefox</span>
+                      </div>
+                      <span className="text-sm">8%</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center">
+                        <div className="w-3 h-3 bg-slate-500 rounded-full mr-2"></div>
+                        <span className="text-sm">Edge</span>
+                      </div>
+                      <span className="text-sm">5%</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center">
+                        <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                        <span className="text-sm">Others</span>
+                      </div>
+                      <span className="text-sm">2%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
             {/* Resource Usage Insights */}
             <div className="mb-6">
