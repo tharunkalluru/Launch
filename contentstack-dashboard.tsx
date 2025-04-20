@@ -1,13 +1,16 @@
 "use client";
 
 import Image from "next/image"
-import { Bell, Search, Grid3X3, Play, Clock, Github, ChevronDown, BellRing, Filter, Plus, AlertCircle, Package, Shield, Sparkles, FileWarning, Cpu, Database, CheckCircle2, CalendarClock } from "lucide-react"
+import { Bell, Search, Grid3X3, Play, Clock, Github, ChevronDown, BellRing, Filter, Plus, AlertCircle, Package, Shield, Sparkles, FileWarning, Cpu, Database, CheckCircle2, CalendarClock, Cloud } from "lucide-react"
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu"
 
 export default function ContentStackDashboard() {
   const router = useRouter();
   const [isAlertVisible, setIsAlertVisible] = useState(true);
+  const [showGrid, setShowGrid] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -39,9 +42,117 @@ export default function ContentStackDashboard() {
           <button className="p-2 rounded-full hover:bg-slate-100">
             <Bell className="w-5 h-5 text-slate-500" />
           </button>
-          <button className="p-2 rounded-full hover:bg-slate-100">
-            <Grid3X3 className="w-5 h-5 text-slate-500" />
-          </button>
+          <div className="relative">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowGrid(!showGrid);
+              }}
+              className="p-2 rounded-full hover:bg-slate-100"
+            >
+              <Grid3X3 className="w-5 h-5 text-slate-500" />
+            </button>
+            {showGrid && (
+              <div className="absolute top-full right-0 mt-2 bg-white border rounded-lg shadow-xl p-6 grid grid-cols-4 gap-6 z-50 w-[320px]">
+                <div className="flex flex-col items-center justify-center gap-1 hover:bg-purple-50 p-2 rounded-lg transition-colors cursor-pointer group">
+                  <div className="bg-purple-100 p-2 rounded-lg group-hover:bg-purple-200 transition-colors">
+                    <Play className="w-5 h-5 text-purple-600" />
+                  </div>
+                  <span className="text-xs text-slate-600 group-hover:text-purple-700">Media</span>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1 hover:bg-purple-50 p-2 rounded-lg transition-colors cursor-pointer group">
+                  <div className="bg-blue-100 p-2 rounded-lg group-hover:bg-blue-200 transition-colors">
+                    <Clock className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <span className="text-xs text-slate-600 group-hover:text-blue-700">Schedule</span>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1 hover:bg-purple-50 p-2 rounded-lg transition-colors cursor-pointer group">
+                  <div className="bg-slate-100 p-2 rounded-lg group-hover:bg-slate-200 transition-colors">
+                    <Github className="w-5 h-5 text-slate-600" />
+                  </div>
+                  <span className="text-xs text-slate-600 group-hover:text-slate-700">Repos</span>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1 hover:bg-purple-50 p-2 rounded-lg transition-colors cursor-pointer group">
+                  <div className="bg-amber-100 p-2 rounded-lg group-hover:bg-amber-200 transition-colors">
+                    <BellRing className="w-5 h-5 text-amber-600" />
+                  </div>
+                  <span className="text-xs text-slate-600 group-hover:text-amber-700">Alerts</span>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1 hover:bg-purple-50 p-2 rounded-lg transition-colors cursor-pointer group">
+                  <div className="bg-indigo-100 p-2 rounded-lg group-hover:bg-indigo-200 transition-colors">
+                    <Filter className="w-5 h-5 text-indigo-600" />
+                  </div>
+                  <span className="text-xs text-slate-600 group-hover:text-indigo-700">Filters</span>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1 hover:bg-purple-50 p-2 rounded-lg transition-colors cursor-pointer group">
+                  <div className="bg-green-100 p-2 rounded-lg group-hover:bg-green-200 transition-colors">
+                    <Plus className="w-5 h-5 text-green-600" />
+                  </div>
+                  <span className="text-xs text-slate-600 group-hover:text-green-700">Create</span>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1 hover:bg-purple-50 p-2 rounded-lg transition-colors cursor-pointer group">
+                  <div className="bg-red-100 p-2 rounded-lg group-hover:bg-red-200 transition-colors">
+                    <AlertCircle className="w-5 h-5 text-red-600" />
+                  </div>
+                  <span className="text-xs text-slate-600 group-hover:text-red-700">Issues</span>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1 hover:bg-purple-50 p-2 rounded-lg transition-colors cursor-pointer group">
+                  <div className="bg-teal-100 p-2 rounded-lg group-hover:bg-teal-200 transition-colors">
+                    <Package className="w-5 h-5 text-teal-600" />
+                  </div>
+                  <span className="text-xs text-slate-600 group-hover:text-teal-700">Packages</span>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1 hover:bg-purple-50 p-2 rounded-lg transition-colors cursor-pointer group">
+                  <div className="bg-sky-100 p-2 rounded-lg group-hover:bg-sky-200 transition-colors">
+                    <Shield className="w-5 h-5 text-sky-600" />
+                  </div>
+                  <span className="text-xs text-slate-600 group-hover:text-sky-700">Security</span>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1 hover:bg-purple-50 p-2 rounded-lg transition-colors cursor-pointer group">
+                  <div className="bg-fuchsia-100 p-2 rounded-lg group-hover:bg-fuchsia-200 transition-colors">
+                    <Sparkles className="w-5 h-5 text-fuchsia-600" />
+                  </div>
+                  <span className="text-xs text-slate-600 group-hover:text-fuchsia-700">AI</span>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1 hover:bg-purple-50 p-2 rounded-lg transition-colors cursor-pointer group">
+                  <div className="bg-orange-100 p-2 rounded-lg group-hover:bg-orange-200 transition-colors">
+                    <FileWarning className="w-5 h-5 text-orange-600" />
+                  </div>
+                  <span className="text-xs text-slate-600 group-hover:text-orange-700">Logs</span>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1 hover:bg-purple-50 p-2 rounded-lg transition-colors cursor-pointer group">
+                  <div className="bg-cyan-100 p-2 rounded-lg group-hover:bg-cyan-200 transition-colors">
+                    <Cpu className="w-5 h-5 text-cyan-600" />
+                  </div>
+                  <span className="text-xs text-slate-600 group-hover:text-cyan-700">Compute</span>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1 hover:bg-purple-50 p-2 rounded-lg transition-colors cursor-pointer group">
+                  <div className="bg-violet-100 p-2 rounded-lg group-hover:bg-violet-200 transition-colors">
+                    <Database className="w-5 h-5 text-violet-600" />
+                  </div>
+                  <span className="text-xs text-slate-600 group-hover:text-violet-700">Data</span>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1 hover:bg-purple-50 p-2 rounded-lg transition-colors cursor-pointer group">
+                  <div className="bg-emerald-100 p-2 rounded-lg group-hover:bg-emerald-200 transition-colors">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                  </div>
+                  <span className="text-xs text-slate-600 group-hover:text-emerald-700">Status</span>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1 hover:bg-purple-50 p-2 rounded-lg transition-colors cursor-pointer group">
+                  <div className="bg-rose-100 p-2 rounded-lg group-hover:bg-rose-200 transition-colors">
+                    <CalendarClock className="w-5 h-5 text-rose-600" />
+                  </div>
+                  <span className="text-xs text-slate-600 group-hover:text-rose-700">Events</span>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-1 hover:bg-purple-50 p-2 rounded-lg transition-colors cursor-pointer group">
+                  <div className="bg-gray-100 p-2 rounded-lg group-hover:bg-gray-200 transition-colors">
+                    <Search className="w-5 h-5 text-gray-600" />
+                  </div>
+                  <span className="text-xs text-slate-600 group-hover:text-gray-700">Search</span>
+                </div>
+              </div>
+            )}
+          </div>
           <div className="flex items-center gap-2">
             <div className="flex items-center">
               <Image
@@ -78,10 +189,31 @@ export default function ContentStackDashboard() {
               <button className="p-2 rounded-md border hover:bg-slate-50">
                 <Filter className="w-4 h-4 text-slate-500" />
               </button>
-              <button className="bg-purple-600 text-white px-4 py-2 rounded-md flex items-center gap-2 hover:bg-purple-700">
-                <Plus className="w-4 h-4" />
-                <span>New Project</span>
-              </button>
+              <DropdownMenu.Root open={dropdownOpen} onOpenChange={setDropdownOpen}>
+                <DropdownMenu.Trigger asChild>
+                  <button className="bg-purple-600 text-white px-4 py-2 rounded-md flex items-center gap-2 hover:bg-purple-700" data-component-name="ContentStackDashboard">
+                    <Plus className="w-4 h-4" />
+                    <span data-component-name="ContentStackDashboard">New Project</span>
+                    <ChevronDown className="w-4 h-4 ml-1" />
+                  </button>
+                </DropdownMenu.Trigger>
+                <DropdownMenu.Portal>
+                  <DropdownMenu.Content 
+                    className="min-w-[220px] bg-white rounded-md p-1 shadow-lg border" 
+                    sideOffset={5}
+                    align="end"
+                  >
+                    <DropdownMenu.Item className="flex items-center gap-2 px-3 py-2 text-sm outline-none cursor-pointer hover:bg-purple-50 rounded-sm">
+                      <Github className="w-4 h-4" />
+                      <span>Import from Github</span>
+                    </DropdownMenu.Item>
+                    <DropdownMenu.Item className="flex items-center gap-2 px-3 py-2 text-sm outline-none cursor-pointer hover:bg-purple-50 rounded-sm">
+                      <Cloud className="w-4 h-4" />
+                      <span>Import from Bitbucket</span>
+                    </DropdownMenu.Item>
+                  </DropdownMenu.Content>
+                </DropdownMenu.Portal>
+              </DropdownMenu.Root>
             </div>
           </div>
 
@@ -706,4 +838,3 @@ export default function ContentStackDashboard() {
     </div>
   )
 }
-
